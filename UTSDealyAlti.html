@@ -20,18 +20,10 @@
     <br></br>
 
     <button onclick="HitungTHR()">Hitung THR</button>
+    <h2>Hasil Hitungan THR</h2>
+    <div id="output"></div>
     <br></br>
 
-    <h2>Hasil Hitungan THR</h2>
-    <div id="Hasil">
-        <p id="hasilGajiPokok"></p>
-        <p id="hasilTunjanganTetap"></p>
-        <p id="hasilMasaKerja"></p>
-        <p id="hasilTotalGaji"></p>
-        <p id="hasilTHR"></p>
-        <p id="hasilPPH"></p>
-        <p id="hasilTotalPembayaran"></p>
-    </div>
 
     <script>
         function HitungTHR(){
@@ -59,13 +51,14 @@
                 PPH = 0;
             }
             TotalPembayaran = THR + PPH;
-            document.getElementById("hasilGajiPokok").innerText = "Gaji Pokok = " + GajiPokok;
-            document.getElementById("hasilTunjanganTetap").innerText = "Tunjangan Tetap= " + TunjanganTetap;
-            document.getElementById("hasilMasaKerja").innerText = "Lama Bekerja = " + MasaKerja;
-            document.getElementById("hasilTotalGaji").innerText = "Total Gaji= " + TotalGaji;
-            document.getElementById("hasilTHR").innerText = "THR = " + THR;
-            document.getElementById("hasilPPH").innerText = "PPH = " + PPH;
-            document.getElementById("hasilTotalPembayaran").innerText = "Total Pembayaran= " + TotalPembayaran;
+
+            var outputElement = document.getElementById('output');
+            outputElement.innerHTML = `
+            <p>Total Gaji: ${TotalGaji}</p>
+            <p>THR: ${THR}</p>
+            <p>PPH (Pajak): ${PPH}</p>
+            <p>Total Pembayaran: ${TotalPembayaran}</p>
+            `;
 
         }
     </script>

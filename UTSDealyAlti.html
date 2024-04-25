@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTS Dealy Alti</title>
+</head>
+<body>
+    <h1>Menghitung THR</h1>
+    <label for="GajiPokok"> Gaji Pokok = </label>
+    <input type="number" id="GajiPokok" value="0">
+    <br></br>
+
+    <label for="TujanganTetap"> Tunjangan Tetap = </label>
+    <input type="number" id="TunjanganTetap" value="0" >
+    <br></br>
+
+    <label for="MasaKerja"> Lama Bekerja (bulan) = </label>
+    <input type="number" id="MasaKerja" value="0" >
+    <br></br>
+
+    <button onclick="HitungTHR()">Hitung THR</button>
+    <br></br>
+
+    <h2>Hasil Hitungan THR</h2>
+    <div id="Hasil">
+        <p id="hasilGajiPokok"></p>
+        <p id="hasilTunjanganTetap"></p>
+        <p id="hasilMasaKerja"></p>
+        <p id="hasilTotalGaji"></p>
+        <p id="hasilTHR"></p>
+        <p id="hasilPPH"></p>
+        <p id="hasilTotalPembayaran"></p>
+    </div>
+
+    <script>
+        function HitungTHR(){
+            var GajiPokok = parseFloat(document.getElementById("GajiPokok").value);
+            var TunjanganTetap = parseFloat(document.getElementById("TunjanganTetap").value);
+            var MasaKerja = parseInt(document.getElementById("MasaKerja").value);
+
+            var TotalGaji = GajiPokok+TunjanganTetap;
+            var THR;
+
+            if(MasaKerja >= 12){
+                THR = TotalGaji;
+            } else if (MasaKerja < 12) {
+                THR = MasaKerja/12 * TotalGaji;
+            } else{
+                THR = 0;
+            }
+            var PPH ;
+            var TotalPembayaran;
+            if(TotalGaji >4500000){
+                PPH = 0.5*TotalGaji;
+            } else if (TotalGaji <= 4500000){
+                PPH = 0;
+            } else{
+                PPH = 0;
+            }
+            TotalPembayaran = THR + PPH;
+            document.getElementById("hasilGajiPokok").innerText = "Gaji Pokok = " + GajiPokok;
+            document.getElementById("hasilTunjanganTetap").innerText = "Tunjangan Tetap= " + TunjanganTetap;
+            document.getElementById("hasilMasaKerja").innerText = "Lama Bekerja = " + MasaKerja;
+            document.getElementById("hasilTotalGaji").innerText = "Total Gaji= " + TotalGaji;
+            document.getElementById("hasilTHR").innerText = "THR = " + THR;
+            document.getElementById("hasilPPH").innerText = "PPH = " + PPH;
+            document.getElementById("hasilTotalPembayaran").innerText = "Total Pembayaran= " + TotalPembayaran;
+
+        }
+    </script>
+    
+</body>
+</html>
